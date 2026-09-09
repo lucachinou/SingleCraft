@@ -75,7 +75,7 @@ def canAccessGlobalSettings():
     rank = database.getUserRank(user_id)
     if user_id is None:
         return flask.jsonify({"success": False, "message": "INVALID_TOKEN"})
-    # TODO: Allow admin to decreased permission level for global settings access instead of hard-coding the rank
+    # TODO: Allow admins to decrease the permission level required for global settings access instead of hard-coding the rank
     return flask.jsonify({"success": True, "can_access": rank == "ADMIN"})
 
 @bp.delete('/ClearConsoleHistory')
@@ -123,7 +123,7 @@ def sendCommand():
 
     date = datetime.datetime.now()
     servers_logs[server_id].append(
-        f"[{date.hour}:{date.minute}:{date.second}] [SingleCraft/INFO] {database.GetUsernameByToken(flask.request.cookies.get('token'))[0]} execute \"{command}\" ")
+        f"[{date.hour}:{date.minute}:{date.second}] [SingleCraft/INFO] {database.GetUsernameByToken(flask.request.cookies.get('token'))[0]} executed \"{command}\" ")
     running_servers[server_id].stdin.write(command + '\n')
     running_servers[server_id].stdin.flush()
     return flask.jsonify({"success": True})

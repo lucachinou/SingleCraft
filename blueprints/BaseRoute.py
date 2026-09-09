@@ -63,6 +63,6 @@ def home():
 
 @bp.get("/mcp")
 def mcp():
-    # TODO: Implement new secure routes for stop and start before implement MCP
+    # TODO: Implement new secure routes for stop and start before implementing MCP
     return flask.jsonify({"work_in_progress": True})
     return flask.send_file(Path(__file__).parent.parent / "mcp.json")

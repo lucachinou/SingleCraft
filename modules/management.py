@@ -37,10 +37,10 @@ def start_server(server_id, jar_name):
 
     if "spigot" in jar_name:
         if database.GetSetting(1) == "True":
-            servers_logs[server_id].append(f"[{date.strftime('%H:%M:%S')}] [SingleCraft/WARN] Spigot server currently not supported due to a bug that affect commands.")
+            servers_logs[server_id].append(f"[{date.strftime('%H:%M:%S')}] [SingleCraft/WARN] Spigot servers are currently not supported due to a bug that affects commands.")
             return False
         else:
-            servers_logs[server_id].append(f"[{date.strftime('%H:%M:%S')}] [SingleCraft/WARN] Spigot server are currently in experimental. Please use RCon instead of stdin.")
+            servers_logs[server_id].append(f"[{date.strftime('%H:%M:%S')}] [SingleCraft/WARN] Spigot servers are currently experimental. Please use RCon instead of stdin.")
 
     server_dir.mkdir(parents=True, exist_ok=True)
 
@@ -60,7 +60,7 @@ def start_server(server_id, jar_name):
         result = result[0]
 
         if not "java" in result:
-            servers_logs[server_id].append(f"[{date.strftime('%H:%M:%S')}] [SingleCraft/WARN] Custom files are currently in experimental. Please report any issues you have!")
+            servers_logs[server_id].append(f"[{date.strftime('%H:%M:%S')}] [SingleCraft/WARN] Custom files are currently experimental. Please report any issues you have!")
 
     command = result.format(max_memory=MaxMemory[0], file_name=str(jar_path))
 

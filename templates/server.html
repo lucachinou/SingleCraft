@@ -69,7 +69,7 @@
                 document.title = "SingleCraft - "+data.name;
                 document.getElementById("ServerName").textContent = data.name;
             } else {
-                console.error("Cannot find server name, try to refresh the page.");
+                console.error("Could not find the server name. Try refreshing the page.");
                 document.title = "SingleCraft - Unknown Server";
                 document.getElementById("ServerName").textContent = "Unknown Server";
             }
@@ -86,7 +86,7 @@
             }
         })
 
-        //TODO: That's temp while server settings doesn't fully finished
+        // TODO: Temporary until server settings are fully finished
         fetch('/API/Servers/getServerPort?server_id='+getServerId())
             .then(res => res.json())
             .then(data => {
